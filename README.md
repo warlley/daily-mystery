@@ -1,6 +1,7 @@
 # daily-mystery
 
 This repository contains a simple static site used for MVP and proof of concept purposes.
+All static assets are stored in the `public/` directory.
 
 ## Development
 
