@@ -1,0 +1,12 @@
+{
+  "name": "daily-mystery",
+  "version": "1.0.0",
+  "description": "Simple static site served with http-server",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 8080 ."
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
