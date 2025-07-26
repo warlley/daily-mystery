@@ -4,7 +4,7 @@
   "description": "Simple static site served with http-server",
   "main": "index.js",
   "scripts": {
-    "start": "http-server -p 8080 public"
+    "start": "http-server -p 8080 docs"
   },
   "dependencies": {
     "http-server": "^14.1.1"
