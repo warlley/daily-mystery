@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Mistério da Praça - Dia 2</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+      color: #333;
+    }
+    header, footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    main {
+      padding: 1rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    .image-container {
+      text-align: center;
+      margin: 1rem 0;
+    }
+    .image-container img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .audio-container {
+      margin: 1rem 0;
+      text-align: center;
+    }
+    .riddle {
+      margin: 2rem 0;
+    }
+    ul#sortable-list {
+      list-style: none;
+      padding: 0;
+    }
+    ul#sortable-list li {
+      background: #ddd;
+      margin-bottom: 0.5rem;
+      padding: 0.8rem;
+      border-radius: 4px;
+      cursor: grab;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      background: #222;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    .feedback {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>O Mistério da Praça</h1>
+    <p>Dia 2: Ordem dos Fatos</p>
+  </header>
+
+  <main>
+    <p>
+      A perícia localizou uma câmera de segurança da prefeitura que registrou a madrugada do crime. As imagens, exibidas em quatro quadros sequenciais, mostram uma figura imóvel no banco da praça, a chegada da polícia e o envelope sendo recolhido. Um novo depoimento foi coletado — desta vez de <strong>Dona Neide</strong>, uma moradora do prédio em frente à praça, que costuma observar a movimentação da janela.
+    </p>
+
+    <div class="audio-container">
+      <p><strong>Depoimento de Dona Neide:</strong></p>
+      <audio controls>
+        <source src="cases/week1/day2.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+      </audio>
+    </div>
+
+    <div class="image-container">
+      <img src="cases/week1/day2.jpg" alt="Montagem com quatro quadros de câmera de segurança mostrando: (1) figura sentada à noite, (2) corpo pela manhã, (3) chegada da perícia, (4) close da mão com envelope.">
+    </div>
+
+    <div class="riddle">
+      <p>Com base nas imagens da câmera de segurança e no depoimento de Dona Neide, organize os acontecimentos na ordem cronológica correta:</p>
+      <ul id="sortable-list">
+        <li>O corpo é descoberto pela manhã</li>
+        <li>O envelope é recolhido pela perícia</li>
+        <li>Figura sentada aparece no banco durante a madrugada</li>
+        <li>Viatura e agentes da perícia chegam à praça</li>
+      </ul>
+      <button onclick="checkOrder()">Verificar</button>
+      <div class="feedback" id="feedback"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Volte amanhã para a próxima pista.</p>
+  </footer>
+
+  <script>
+    const correctOrder = [
+      "Figura sentada aparece no banco durante a madrugada",
+      "O corpo é descoberto pela manhã",
+      "Viatura e agentes da perícia chegam à praça",
+      "O envelope é recolhido pela perícia"
+    ];
+
+    new Sortable(document.getElementById('sortable-list'), {
+      animation: 150
+    });
+
+    function checkOrder() {
+      const items = Array.from(document.querySelectorAll('#sortable-list li')).map(el => el.textContent.trim());
+      const feedback = document.getElementById('feedback');
+      const correct = items.every((val, index) => val === correctOrder[index]);
+      feedback.textContent = correct
+        ? "Correto! A sequência corresponde exatamente ao que foi registrado pelas câmeras."
+        : "A ordem está incorreta. Reveja os quadros da imagem e ouça o depoimento com atenção.";
+      feedback.style.color = correct ? "green" : "red";
+    }
+  </script>
+</body>
+</html>
