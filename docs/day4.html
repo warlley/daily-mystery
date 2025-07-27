@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Mistério da Praça - Dia 4</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+      color: #333;
+    }
+    header, footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    main {
+      padding: 1rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    .riddle, .reveal {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      background: #222;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    .feedback {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .reveal {
+      display: none;
+      border: 1px solid #aaa;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .image-container {
+    text-align: center;
+    margin: 1.5rem 0;
+    }
+    .image-container img {
+    max-width: 100%;
+    border-radius: 8px;
+    }    
+  </style>
+</head>
+<body>
+  <header>
+    <h1>O Mistério da Praça</h1>
+    <p>Dia 4: A Mensagem no Mural</p>
+  </header>
+
+  <main>
+    <p>
+      Na lateral de um muro próximo à praça, alguém havia rabiscado em carvão algo que parecia um código: <strong>VDQWRV</strong><strong>92</strong>. Abaixo, uma pista adicional: <em>"D = A"</em>.
+    </p>
+
+    <div class="image-container">
+        <img src="cases/week1/day4.jpg" alt="Mensagem cifrada no muro">
+    </div>
+
+    <div class="riddle">
+      <p><em>
+        Uma pista enigmática foi deixada abaixo: "D = A". Só isso. Consegue decifrar?
+      </em></p>
+      <input type="text" id="answer" placeholder="Digite aqui...">
+      <button onclick="checkAnswer()">Verificar</button>
+      <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="reveal" id="reveal">
+      <p><strong>Rua dos Santos, nº 92.</strong></p>
+      <p>Ao informar esse endereço à polícia, encontraram uma antiga caixa de correio com uma carta dentro. Seu conteúdo era perturbador:</p>
+      <blockquote>
+        “Vocês continuam procurando onde o corpo foi deixado…<br>
+        …mas se querem a verdade, comecem de onde a alma foi quebrada.<br><br>
+        A praça foi só o fim.<br><br>
+        O começo… tem cheiro de tinta e de medo.<br><br>
+        Paredes que viram tudo.<br>
+        Gritos abafados por cartolina colorida.”
+      </blockquote>
+    </div>
+  </main>
+
+  <footer>
+    <p>Volte amanhã para a próxima pista.</p>
+  </footer>
+
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById('answer').value.trim().toUpperCase();
+      const feedback = document.getElementById('feedback');
+      const reveal = document.getElementById('reveal');
+
+      if (input === 'SANTOS') {
+        feedback.textContent = 'Decifrado com sucesso!';
+        feedback.style.color = 'green';
+        reveal.style.display = 'block';
+      } else {
+        feedback.textContent = 'Ainda não... tente novamente.';
+        feedback.style.color = 'red';
+        reveal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
