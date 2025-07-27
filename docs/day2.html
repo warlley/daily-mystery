@@ -92,12 +92,15 @@
     </div>
 
     <div class="riddle">
-      <p>Com base nas imagens da câmera de segurança e no depoimento de Dona Neide, organize os acontecimentos na ordem cronológica correta:</p>
+      <p>Com base nas imagens da câmera de segurança e no depoimento de Dona Neide, organize os acontecimentos na ordem cronológica correta. Atenção: alguns eventos não estão na imagem, outros só são mencionados no áudio.</p>
       <ul id="sortable-list">
-        <li>O corpo é descoberto pela manhã</li>
         <li>O envelope é recolhido pela perícia</li>
+        <li>Dona Neide escuta um barulho estranho</li>
         <li>Figura sentada aparece no banco durante a madrugada</li>
         <li>Viatura e agentes da perícia chegam à praça</li>
+        <li>Corpo continua imóvel ao amanhecer</li>
+        <li>Luz do poste apaga automaticamente</li>
+        <li>Dona Neide vê um vulto indo embora</li>
       </ul>
       <button onclick="checkOrder()">Verificar</button>
       <div class="feedback" id="feedback"></div>
@@ -111,7 +114,10 @@
   <script>
     const correctOrder = [
       "Figura sentada aparece no banco durante a madrugada",
-      "O corpo é descoberto pela manhã",
+      "Dona Neide escuta um barulho estranho",
+      "Dona Neide vê um vulto indo embora",
+      "Luz do poste apaga automaticamente",
+      "Corpo continua imóvel ao amanhecer",
       "Viatura e agentes da perícia chegam à praça",
       "O envelope é recolhido pela perícia"
     ];
@@ -125,8 +131,8 @@
       const feedback = document.getElementById('feedback');
       const correct = items.every((val, index) => val === correctOrder[index]);
       feedback.textContent = correct
-        ? "Correto! A sequência corresponde exatamente ao que foi registrado pelas câmeras."
-        : "A ordem está incorreta. Reveja os quadros da imagem e ouça o depoimento com atenção.";
+        ? "Correto! A sequência corresponde exatamente ao que foi registrado e ouvido."
+        : "A ordem está incorreta. Tente revisar com mais atenção a imagem e o áudio.";
       feedback.style.color = correct ? "green" : "red";
     }
   </script>
