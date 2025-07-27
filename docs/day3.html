@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Mistério da Praça - Dia 3</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+      color: #333;
+    }
+    header, footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    main {
+      padding: 1rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    .image-container img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .image-container, .audio-container, .riddle, .reveal {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .code-inputs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    select {
+      font-size: 1.5rem;
+      padding: 0.4rem;
+    }
+    .digit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .feedback {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .reveal {
+      display: none;
+      border: 1px solid #aaa;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .reveal audio {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>O Mistério da Praça</h1>
+    <p>Dia 3: A Caixa Trancada</p>
+  </header>
+
+  <main>
+    <p>
+      Entre os arbustos da praça, a perícia encontrou uma pequena caixa de madeira trancada por um cadeado de quatro dígitos. Sobre ela, um bilhete com dizeres estranhos, quase poéticos — como se escrito por alguém fora de si. O conteúdo da caixa ainda é um mistério.
+    </p>
+
+    <div class="image-container">
+        <img src="cases/week1/day3.jpg" alt="Imagem do Dia 1">
+    </div>
+
+    <div class="riddle">
+      <p><em>
+        “Três pares caminharam pela praça.<br>
+        O primeiro largou flores — metade da idade de uma moça de 16.<br>
+        O segundo desenhou passos — dois a mais que os olhos de um rosto comum.<br>
+        O terceiro… deixou silêncio: exatamente o dobro de nada.<br>
+        <br>
+        Por fim, veio o tempo: sete a menos que a dúzia.<br>
+        <br>
+        São quatro números. São eles que abrem.”
+      </em></p>
+
+      <div class="code-inputs">
+        <div class="digit">
+          <select id="d1">
+            <option value="">-</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+          <span id="f1"></span>
+        </div>
+        <div class="digit">
+          <select id="d2">
+            <option value="">-</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+          <span id="f2"></span>
+        </div>
+        <div class="digit">
+          <select id="d3">
+            <option value="">-</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+          <span id="f3"></span>
+        </div>
+        <div class="digit">
+          <select id="d4">
+            <option value="">-</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+          <span id="f4"></span>
+        </div>
+      </div>
+      <p>
+        <button onclick="checkCode()">Tentar abrir</button>
+      </p>
+      <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="reveal" id="reveal">
+      <p><strong>Dentro da caixa, havia uma fita cassete rotulada apenas com “Reza”.</strong></p>
+      <p>Ao ser reproduzida, escutamos a voz de alguém — talvez a vítima, talvez o assassino — murmurando palavras desconexas misturadas com trechos de uma prece:</p>
+      <audio controls>
+        <source src="cases/week1/day3.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+      </audio>
+    </div>
+  </main>
+
+  <footer>
+    <p>Volte amanhã para a próxima pista.</p>
+  </footer>
+
+  <script>
+    function checkCode() {
+      const d1 = document.getElementById('d1').value;
+      const d2 = document.getElementById('d2').value;
+      const d3 = document.getElementById('d3').value;
+      const d4 = document.getElementById('d4').value;
+
+      const f1 = document.getElementById('f1');
+      const f2 = document.getElementById('f2');
+      const f3 = document.getElementById('f3');
+      const f4 = document.getElementById('f4');
+      const feedback = document.getElementById('feedback');
+      const reveal = document.getElementById('reveal');
+
+      const correct = ['8', '4', '0', '5'];
+      const inputs = [d1, d2, d3, d4];
+      const feedbacks = [f1, f2, f3, f4];
+
+      let allCorrect = true;
+
+      for (let i = 0; i < 4; i++) {
+        if (inputs[i] === correct[i]) {
+          feedbacks[i].textContent = '✔';
+          feedbacks[i].style.color = 'green';
+        } else {
+          feedbacks[i].textContent = '✖';
+          feedbacks[i].style.color = 'red';
+          allCorrect = false;
+        }
+      }
+
+      if (allCorrect) {
+        feedback.textContent = 'O cadeado se abriu!';
+        feedback.style.color = 'green';
+        reveal.style.display = 'block';
+      } else {
+        feedback.textContent = 'Ainda trancado...';
+        feedback.style.color = 'red';
+        reveal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
